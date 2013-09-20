@@ -19,23 +19,23 @@ import android.os.Message;
  *
  */
 public class LogFileWriter {
-	private boolean								mEnabled			= false;
-	private FileOutputStream					mFileWriter			= null;
-	private String								mCurrentLogPath		= null;
-	private final static int					MAX_BUF_LEN			= 16 * 1024;
-	private final static int					MAX_SIZE_PER_FILE	= 200 * 1024;
-	private byte[]								mWriteBuffer		= new byte[MAX_BUF_LEN];
-	private int									mBufPos				= 0;
-	private static Handler						mEventHandler		= null;
-	private int									mBytesWriten 		= 0;
-	private int									mQuota 				= 0;
-	private String								mFileNamePrefix 	= null;
-	private String								mLogDir 			= null;
-	private static HandlerThread				sLogHandlerThread	= null;
+	private boolean			mEnabled		= false;
+	private FileOutputStream	mFileWriter		= null;
+	private String			mCurrentLogPath		= null;
+	private final static int	MAX_BUF_LEN		= 16 * 1024;
+	private final static int	MAX_SIZE_PER_FILE	= 200 * 1024;
+	private byte[]			mWriteBuffer		= new byte[MAX_BUF_LEN];
+	private int			mBufPos			= 0;
+	private static Handler		mEventHandler		= null;
+	private int			mBytesWriten 		= 0;
+	private int			mQuota 			= 0;
+	private String			mFileNamePrefix 	= null;
+	private String			mLogDir 		= null;
+	private static HandlerThread	sLogHandlerThread	= null;
 	
-	private final static int 					MSG_INIT				= 0;
-	private final static int 					MSG_SAVE_LOG_TO_FILE	= 1;
-	private final static int 					MSG_CLOSE_CURRENT_FILE	= 2;
+	private final static int 	MSG_INIT		= 0;
+	private final static int 	MSG_SAVE_LOG_TO_FILE	= 1;
+	private final static int 	MSG_CLOSE_CURRENT_FILE	= 2;
 
 	static {
 		startupInit();
